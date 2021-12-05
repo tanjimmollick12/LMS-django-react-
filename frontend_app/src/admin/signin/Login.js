@@ -43,7 +43,7 @@ function Login() {
 
                 />
               </div>
-              <LinkContainer to='/admindashboard'>
+              <LinkContainer to='/dashboard'>
                 <button className='form-input-btn' type='submit'>Sign in </button>
               </LinkContainer>
               <span className='form-input-login' >

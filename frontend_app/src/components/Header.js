@@ -12,16 +12,16 @@ const Header = () => {
                     </LinkContainer>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id='basic-navbar-nav'>
-                            <LinkContainer to='/login'>
-                            <Nav style={{alignItems: 'right'}}>
+                        <LinkContainer to='/login'>
+                            <Nav.Link>
                                 <i className='fas fa-user'></i> Sign In
-                            </Nav>
-                               </LinkContainer>
+                            </Nav.Link>
+                        </LinkContainer>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
         </header>
-)
+    )
 }
 
 export default Header

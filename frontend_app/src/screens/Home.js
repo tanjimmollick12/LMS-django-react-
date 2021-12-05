@@ -4,12 +4,13 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Loan from "../components/Loan";
 import loans from "../Loans";
+
 const Home = () => {
     return (
         <div>
             <Header/>
-            <main className={'py-3'}>
-                <Container>
+            <main>
+                <Container className={'py-3'}>
                     <h1>Offered Loans</h1>
                     <Row>
                         {loans.map(loan=>(

@@ -1,0 +1,14 @@
+.side{
+    display: flex;
+
+  }
+  .home{
+   flex: 4;
+
+
+  }
+
+  .link{
+    text-decoration: none;
+    color: inherit;
+  }
