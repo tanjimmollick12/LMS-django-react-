@@ -11,7 +11,7 @@ function AddLoanee() {
 
       <div style={{ padding: "5px 5px 20px 580px", backgroundColor: "#f5f5f5" }}>
         <div className="newLoanee">
-          <h1 className="addLoaneeTitle">New Loanee</h1>
+          <h1 className="addLoaneeTitle">Add Loanee</h1>
           <form className="addLoaneeForm">
             <div className="addLoaneeItem">
               <label>Name</label>

@@ -40,7 +40,7 @@ export default function Sidebar() {
                                 Loan
                             </li>
                         </Link>
-                        <Link to="/orders" className="link">
+                        <Link to="/chatlist" className="link">
                             <li>
                                 <Chat className={'sidebarIcon'}/>
                                 Chat

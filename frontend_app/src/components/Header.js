@@ -12,7 +12,7 @@ const Header = () => {
                     </LinkContainer>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id='basic-navbar-nav'>
-                        <LinkContainer to='/login'>
+                        <LinkContainer to='/signin'>
                             <Nav.Link>
                                 <i className='fas fa-user'></i> Sign In
                             </Nav.Link>

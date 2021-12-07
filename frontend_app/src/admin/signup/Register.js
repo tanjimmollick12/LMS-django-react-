@@ -20,10 +20,11 @@ const Register = () => {
                     <form onSubmit
                           className='form'
                           noValidate>
-                        <h1>Register For Admin</h1>
-                        <div className='form-inputs'>
-                            <br/>
 
+                        <div className='form-inputs'>
+
+                            <br/>
+                            <h1>Register For Admin</h1>
                             <label className='labeld'> Name </label>
                             <div>
 

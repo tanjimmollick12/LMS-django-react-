@@ -21,11 +21,11 @@ const LoaneeList = () => {
                 <Col className='text-left'>
 
 
-                        <LinkContainer to='/addloanee'>
+                    <LinkContainer to='/addloanee'>
                         <Button className='my-3'>
                             <i className='fas fa-plus'></i> Add Loanee
                         </Button>
-                        </LinkContainer>
+                    </LinkContainer>
 
                 </Col>
 
@@ -39,12 +39,10 @@ const LoaneeList = () => {
                     <tr>
                         <th>ID</th>
                         <th>First Name</th>
-                        <th>Last Name</th>
                         <th>Gender</th>
-                        <th>Date Of Birth</th>
-                        <th>Email</th>
-                        <th>Contact</th>
-
+                        <th>Loan Amount</th>
+                        <th>Rate</th>
+                        <th>Time</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -57,14 +55,22 @@ const LoaneeList = () => {
                         <td>c</td>
                         <td>d</td>
                         <td>x</td>
-                        <td>w</td>
 
                         <td>
+                            <LinkContainer to='/loaneedetails'>
+                                <Button variant='light' className='btn-sm'>
+                                    <i className='fas fa-user'></i>
+                                </Button>
+                            </LinkContainer>
+                            <LinkContainer to='/addemi'>
+                                <Button variant='light' className='btn-sm'>
+                                    <i className='fas fa-edit'></i>
+                                </Button>
+                            </LinkContainer>
 
                             <Button
                                 variant='danger'
                                 className='btn-sm'
-
                             >
                                 <i className='fas fa-trash'></i>
                             </Button>
@@ -76,7 +82,7 @@ const LoaneeList = () => {
             </>
 
         </>
-)
+    )
 }
 
 export default LoaneeList
