@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useEffect,useState }  from 'react'
 import {Col, Container, Row} from "react-bootstrap";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Loan from "../components/Loan";
-import loans from "../Loans";
-
+// import loans from "../Loans";
+import axios from 'axios';
 const Home = () => {
+
+  const [loans, setLoans] = useState([])
+  useEffect(() => {
+
+    axios.get('http://localhost:8000/api/loanlist')
+      .then(resp => {
+        setLoans(resp.data)
+      })
+  }, [])
+
     return (
         <div>
             <Header/>

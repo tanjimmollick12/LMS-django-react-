@@ -1,12 +1,32 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import axios from 'axios';
 import {Table, Button, Row, Col} from 'react-bootstrap'
 import './newloanee.css'
 import {LinkContainer} from "react-router-bootstrap";
 import Header from "../../components/Header";
+import {useSelector} from 'react-redux'
 
 const LoaneeList = () => {
 
+    const adminLogin = useSelector((state) => state.adminLogin)
+    const {adminInfo} = adminLogin
 
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + adminInfo.token
+        },
+    }
+
+    const [loanee, setLoanee] = useState([])
+    useEffect(() => {
+
+        axios.get('http://localhost:8000/api/loaneelist', config)
+            .then(resp => {
+                setLoanee(resp.data)
+            })
+    }, [])
+
+    console.log(loanee)
     return (
         <>
             <Header/>
@@ -48,34 +68,36 @@ const LoaneeList = () => {
                     </thead>
                     <tbody>
 
-                    <tr>
-                        <td>h</td>
-                        <td>f</td>
-                        <td>v</td>
-                        <td>c</td>
-                        <td>d</td>
-                        <td>x</td>
+                    {loanee.map((l) => (
+                        <tr key={l.id}>
+                            <td>{l.id}</td>
+                            <td>{l.name}</td>
+                            <td>{l.gender} </td>
+                            <td>{l.loan_amount} TK</td>
+                            <td>{l.rate} %</td>
+                            <td>{l.time} years</td>
 
-                        <td>
-                            <LinkContainer to='/loaneedetails'>
-                                <Button variant='light' className='btn-sm'>
-                                    <i className='fas fa-user'></i>
-                                </Button>
-                            </LinkContainer>
-                            <LinkContainer to='/addemi'>
-                                <Button variant='light' className='btn-sm'>
-                                    <i className='fas fa-edit'></i>
-                                </Button>
-                            </LinkContainer>
-
-                            <Button
-                                variant='danger'
-                                className='btn-sm'
-                            >
-                                <i className='fas fa-trash'></i>
-                            </Button>
-                        </td>
-                    </tr>
+                            <td>
+                                <LinkContainer to={`/addemi/${l.id}`}>
+                                    <Button variant='light' className='btn-sm'>
+                                        <i className='fas fa-plus'></i>
+                                    </Button>
+                                </LinkContainer>
+                                <LinkContainer to={`/updateproduct/${l.id}`}>
+                                    <Button variant='light' className='btn-sm'>
+                                        <i className='fas fa-edit'></i>
+                                    </Button>
+                                </LinkContainer>
+                                {/*<Button*/}
+                                {/*    variant='danger'*/}
+                                {/*    className='btn-sm'*/}
+                                {/*    onClick={() => deleteHandler(l.id)}*/}
+                                {/*>*/}
+                                {/*    <i className='fas fa-trash'></i>*/}
+                                {/*</Button>*/}
+                            </td>
+                        </tr>
+                    ))}
 
                     </tbody>
                 </Table>

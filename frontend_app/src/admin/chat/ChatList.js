@@ -1,47 +1,50 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import {Container} from "react-bootstrap";
 import Header from "../../components/Header";
-import {Container, Link} from "@material-ui/core";
-import {Col, Row} from "react-bootstrap";
-import {ArrowForward} from "@material-ui/icons";
-import {LinkContainer} from "react-router-bootstrap";
+import {Add, ArrowForward} from "@material-ui/icons";
+import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
+import axios from "axios";
 
 const ChatList = () => {
+    const adminLogin = useSelector((state) => state.adminLogin)
+    const {adminInfo} = adminLogin
+
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + adminInfo.token
+        },
+    }
+
+    const [loanee, setLoanee] = useState([])
+    useEffect(() => {
+
+        axios.get('http://localhost:8000/api/loaneelist', config)
+            .then(resp => {
+                setLoanee(resp.data)
+            })
+    }, [])
+
     return (
         <div>
-            <Header/>
-            <br/>
 
             <Container>
-                <h1>Chats</h1>
-                <Col>
-                    <LinkContainer to='/chatbody' className={'link'}>
-                        <Row>
-                            <Col sm={10} md={5} lg={3} xl={2}>
-                                <h4>Mr John</h4>
+                <Header/>
+                <br/>
 
-                            </Col>
-                            <Col style={{width: "20px"}}>
-                                <ArrowForward/>
-                            </Col>
-                        </Row>
+                {
+                    loanee.map((l) => (
+                        <h3 key={l.id}>
+                            <Link to={`/chatbody/${l.id}`} className="link">
+                                <span>{l.name}</span>
+                                <ArrowForward></ArrowForward>
+                            </Link>
+                        </h3>
+                    ))
 
-                    </LinkContainer>
-                </Col>
+                }
 
-                <Col>
-                    <LinkContainer to='/chatbody' className={'link'}>
-                        <Row>
-                            <Col sm={13} md={7} lg={5} xl={4}>
-                                <h4>Mrvbvhfjghfg Johnhnfyjfhgfhgf</h4>
 
-                            </Col>
-                            <Col style={{width: "20px"}}>
-                                <ArrowForward/>
-                            </Col>
-                        </Row>
-
-                    </LinkContainer>
-                </Col>
             </Container>
 
         </div>
