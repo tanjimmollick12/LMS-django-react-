@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {Container, Row} from "react-bootstrap";
-import {ScrollDownBar} from "react-chat-engine";
 import {Scrollbars} from 'react-custom-scrollbars'
 import Header from "../../components/Header";
 import {useParams} from "react-router-dom";
